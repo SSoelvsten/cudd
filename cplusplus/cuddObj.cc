@@ -1467,6 +1467,24 @@ Cudd::bddZero() const
 
 } // Cudd::bddZero
 
+BDD
+Cudd::makeBddNode(int index, BDD T, BDD E) const
+{
+    // Reduction Rule 1
+    if (T == E) { return T; }
+
+    // Use of Complemented Edge
+    bool comple = Cudd_IsComplement(T.node);
+
+    DdNode *r1 = cuddUniqueInter(p->manager, index,
+                                 comple ? Cudd_Not(T.node) : T.node,
+                                 comple ? Cudd_Not(E.node) : E.node);
+
+    DdNode *r2 = comple ? Cudd_Complement(r1) : r1;
+    checkReturnValue(r2);
+
+    return BDD(p, r2);
+} // Cudd::makeBddNode
 
 ADD
 Cudd::addVar() const
@@ -1571,6 +1589,15 @@ Cudd::zddZero() const
 
 } // Cudd::zddZero
 
+ZDD
+Cudd::makeZddNode(int index, ZDD T, ZDD E) const
+{
+    if (T == zddZero()) { return E;}
+
+    DdNode *result = cuddUniqueInterZdd(p->manager, index, T.node, E.node);
+    checkReturnValue(result);
+    return ZDD(p, result);
+} // Cudd::makeZddNode
 
 void
 defaultError(
