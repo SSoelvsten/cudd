@@ -416,6 +416,8 @@ public:
     ZDD Divide(const ZDD& g) const;
     ZDD WeakDivF(const ZDD& g) const;
     ZDD DivideF(const ZDD& g) const;
+    ZDD Complement() const;
+    ZDD operator~() const;
     double CountMinterm(int path) const;
     BDD PortToBdd() const;
     ZDD Ite(const ZDD& g, const ZDD& h) const;

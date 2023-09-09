@@ -1181,6 +1181,15 @@ ZDD::operator-=(
 } // ZDD::operator-=
 
 
+ZDD
+ZDD::operator~() const
+{
+  DdNode *result = Cudd_zddComplement(p->manager, node);
+  checkReturnValue(result);
+  return ZDD(p, result);
+} // ZDD::operator~
+
+
 // ---------------------------------------------------------------------------
 // Members of class Cudd
 // ---------------------------------------------------------------------------
@@ -5908,6 +5917,14 @@ ZDD::DivideF(
 
 } // ZDD::DivideF
 
+ZDD
+ZDD::Complement() const
+{
+  DdNode *result = Cudd_zddComplement(p->manager, node);
+  checkReturnValue(result);
+  return ZDD(p, result);
+
+} // ZDD::Complement
 
 MtrNode *
 Cudd::MakeZddTreeNode(
