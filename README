@@ -17,6 +17,7 @@ BUILD AND INSTALLATION
 
 In the simplest form, you can build the static libraries with:
 
+  autoreconf
   ./configure
   make
   make check
@@ -55,6 +56,7 @@ different from the reference ones.
 
 As an example, a more elaborate build command sequence may be:
 
+  autoreconf
   ./configure CC=clang CXX=clang++ --enable-silent-rules \
     --enable-shared --enable-obj
   make -j4 check
