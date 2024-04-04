@@ -7,5 +7,42 @@
 /config.h.in
 /configure
 
+# Files generated during build
+.deps/
+.libs/
+.dirstamp
+stamp-h1
+
+*.log
+*.scan
+*.status
+
+/html
+
+## Generated from .in files
+/Doxyfile
+/libtool
+/Makefile
+/config.h
+/dddmp/exp/test*.sh
+/doc/cudd.tex
+
+## C/C++
+*.o
+*.lo
+*.a
+*.la
+
+## LaTeX
+*.aux
+*.idx
+*.ilg
+*.ind
+*.out
+*.pdf
+*.toc
+
+# IDEs / auxiliary development tools
+compile_commands.json
 /.vscode
 /.cache
