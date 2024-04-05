@@ -137,7 +137,7 @@ Capsule::~Capsule()
     for (vector<char *>::iterator it = varnames.begin();
          it != varnames.end(); ++it) {
         delete [] *it;
-    }   
+    }
     Cudd_Quit(manager);
 
 } // Capsule::~Capsule
@@ -218,10 +218,10 @@ DD::checkReturnValue(
 	case CUDD_MAX_MEM_EXCEEDED:
 	    p->errorHandler("Maximum memory exceeded.");
 	    break;
-        case CUDD_TIMEOUT_EXPIRED: 
+        case CUDD_TIMEOUT_EXPIRED:
             {
                 std::ostringstream msg;
-                unsigned long lag = 
+                unsigned long lag =
                     Cudd_ReadElapsedTime(mgr) - Cudd_ReadTimeLimit(mgr);
                 msg << "Timeout expired.  Lag = " << lag << " ms.";
                 p->timeoutHandler(msg.str());
@@ -269,7 +269,7 @@ DD::checkReturnValue(
         case CUDD_TIMEOUT_EXPIRED:
             {
                 std::ostringstream msg;
-                unsigned long lag = 
+                unsigned long lag =
                     Cudd_ReadElapsedTime(mgr) - Cudd_ReadTimeLimit(mgr);
                 msg << "Timeout expired.  Lag = " << lag << " ms.\n";
                 p->timeoutHandler(msg.str());
@@ -1372,7 +1372,7 @@ Cudd::checkReturnValue(
         } else if (Cudd_ReadErrorCode(p->manager) == CUDD_TIMEOUT_EXPIRED) {
             std::ostringstream msg;
             DdManager *mgr = p->manager;
-            unsigned long lag = 
+            unsigned long lag =
                 Cudd_ReadElapsedTime(mgr) - Cudd_ReadTimeLimit(mgr);
             msg << "Timeout expired.  Lag = " << lag << " ms.\n";
             p->timeoutHandler(msg.str());
@@ -1406,7 +1406,7 @@ Cudd::checkReturnValue(
         } else if (Cudd_ReadErrorCode(p->manager) == CUDD_TIMEOUT_EXPIRED) {
             std::ostringstream msg;
             DdManager *mgr = p->manager;
-            unsigned long lag = 
+            unsigned long lag =
                 Cudd_ReadElapsedTime(mgr) - Cudd_ReadTimeLimit(mgr);
             msg << "Timeout expired.  Lag = " << lag << " ms.\n";
             p->timeoutHandler(msg.str());
@@ -1476,6 +1476,7 @@ Cudd::bddZero() const
 
 } // Cudd::bddZero
 
+
 BDD
 Cudd::makeBddNode(int index, BDD T, BDD E) const
 {
@@ -1494,6 +1495,7 @@ Cudd::makeBddNode(int index, BDD T, BDD E) const
 
     return BDD(p, r2);
 } // Cudd::makeBddNode
+
 
 ADD
 Cudd::addVar() const
@@ -1534,6 +1536,19 @@ Cudd::addZero() const
     return ADD(p, result);
 
 } // Cudd::addZero
+
+
+ADD
+Cudd::makeAddNode(int index, ADD T, ADD E) const
+{
+    // Reduction Rule 1
+    if (T == E) { return T; }
+
+    DdNode *r = cuddUniqueInter(p->manager, index, T.node, E.node);
+    checkReturnValue(r);
+
+    return ADD(p, r);
+} // Cudd::makeAddNode
 
 
 ADD
@@ -1670,7 +1685,7 @@ Cudd::ReadElapsedTime() const
 } // Cudd::ReadElapsedTime
 
 
-void 
+void
 Cudd::SetStartTime(
   unsigned long st) const
 {
@@ -1679,7 +1694,7 @@ Cudd::SetStartTime(
 } // Cudd::SetStartTime
 
 
-void 
+void
 Cudd::ResetStartTime() const
 {
     Cudd_ResetStartTime(p->manager);
@@ -1721,7 +1736,7 @@ Cudd::IncreaseTimeLimit(
 } // Cudd::IncreaseTimeLimit
 
 
-void 
+void
 Cudd::UnsetTimeLimit() const
 {
     Cudd_UnsetTimeLimit(p->manager);
@@ -2396,7 +2411,7 @@ Cudd::SetNumberXovers(
 } // Cudd::SetNumberXovers
 
 
-unsigned int 
+unsigned int
 Cudd::ReadOrderRandomization() const
 {
     return Cudd_ReadOrderRandomization(p->manager);
@@ -2404,7 +2419,7 @@ Cudd::ReadOrderRandomization() const
 } // Cudd::ReadOrderRandomization
 
 
-void 
+void
 Cudd::SetOrderRandomization(
   unsigned int factor) const
 {
@@ -3351,7 +3366,7 @@ BDD::BiasedUnderApprox(
   double quality0) const
 {
     DdManager *mgr = p->manager;
-    DdNode *result = Cudd_BiasedUnderApprox(mgr, node, bias.node, numVars, 
+    DdNode *result = Cudd_BiasedUnderApprox(mgr, node, bias.node, numVars,
                                             threshold, quality1, quality0);
     checkReturnValue(result);
     return BDD(p, result);
@@ -3368,7 +3383,7 @@ BDD::BiasedOverApprox(
   double quality0) const
 {
     DdManager *mgr = p->manager;
-    DdNode *result = Cudd_BiasedOverApprox(mgr, node, bias.node, numVars, 
+    DdNode *result = Cudd_BiasedOverApprox(mgr, node, bias.node, numVars,
                                            threshold, quality1, quality0);
     checkReturnValue(result);
     return BDD(p, result);

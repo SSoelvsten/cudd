@@ -203,9 +203,9 @@ public:
 	const;
     BDD RemapOverApprox(int numVars, int threshold = 0, double quality = 1.0)
 	const;
-    BDD BiasedUnderApprox(const BDD& bias, int numVars, int threshold = 0, 
+    BDD BiasedUnderApprox(const BDD& bias, int numVars, int threshold = 0,
                           double quality1 = 1.0, double quality0 = 1.0) const;
-    BDD BiasedOverApprox(const BDD& bias, int numVars, int threshold = 0, 
+    BDD BiasedOverApprox(const BDD& bias, int numVars, int threshold = 0,
                          double quality1 = 1.0, double quality0 = 1.0) const;
     BDD ExistAbstract(const BDD& cube, unsigned int limit = 0) const;
     BDD XorExistAbstract(const BDD& g, const BDD& cube) const;
@@ -492,6 +492,7 @@ public:
     ADD addVar(int index) const;
     ADD addOne(void) const;
     ADD addZero(void) const;
+    ADD makeAddNode(int index, ADD low, ADD high) const;
     ADD constant(CUDD_VALUE_TYPE c) const;
     ADD plusInfinity(void) const;
     ADD minusInfinity(void) const;
@@ -696,43 +697,43 @@ public:
     void zddShuffleHeap(int * permutation) const;
     void zddSymmProfile(int lower, int upper) const;
     void DumpDot(
-      const std::vector<BDD>& nodes, 
-      char const * const * inames = 0, 
-      char const * const * onames = 0, 
+      const std::vector<BDD>& nodes,
+      char const * const * inames = 0,
+      char const * const * onames = 0,
       FILE * fp = stdout) const;
     void DumpDaVinci(
-      const std::vector<BDD>& nodes, 
+      const std::vector<BDD>& nodes,
       char const * const * inames = 0,
       char const * const * onames = 0,
       FILE * fp = stdout) const;
     void DumpBlif(
-      const std::vector<BDD>& nodes, 
+      const std::vector<BDD>& nodes,
       char const * const * inames = 0,
       char const * const * onames = 0,
       char * mname = 0,
       FILE * fp = stdout,
       int mv = 0) const;
     void DumpDDcal(
-      const std::vector<BDD>& nodes, 
-      char const * const * inames = 0, 
-      char const * const * onames = 0, 
+      const std::vector<BDD>& nodes,
+      char const * const * inames = 0,
+      char const * const * onames = 0,
       FILE * fp = stdout) const;
     void DumpFactoredForm(
-      const std::vector<BDD>& nodes, 
+      const std::vector<BDD>& nodes,
       char const * const * inames = 0,
       char const * const * onames = 0,
       FILE * fp = stdout) const;
     BDD VectorSupport(const std::vector<BDD>& roots) const;
-    std::vector<unsigned int> 
+    std::vector<unsigned int>
     SupportIndices(const std::vector<BDD>& roots) const;
-    std::vector<unsigned int> 
+    std::vector<unsigned int>
     SupportIndices(const std::vector<ADD>& roots) const;
     int nodeCount(const std::vector<BDD>& roots) const;
     int VectorSupportSize(const std::vector<BDD>& roots) const;
     void DumpDot(
       const std::vector<ADD>& nodes,
-      char const * const * inames = 0, 
-      char const * const * onames = 0, 
+      char const * const * inames = 0,
+      char const * const * onames = 0,
       FILE * fp = stdout) const;
     void DumpDaVinci(
       const std::vector<ADD>& nodes,
