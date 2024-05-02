@@ -1,6 +1,11 @@
 # CMake folder and files
 build
-config.h
+
+# clangd
+.cache
 
 # Emacs
 .#*
+
+# VS Code
+.vscode
