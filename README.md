@@ -29,7 +29,7 @@ git submodule update
 
 Then include the following line in your project's CMakeLists.txt.
 ```bash
-add_subdirectory (external/cudd cudd)
+add_subdirectory(external/cudd cudd)
 ```
 
 Finally, every single executable target is linked to CUDD in the
@@ -41,6 +41,10 @@ target_link_libraries(<target> cudd)
 
 At this point, you may include the C header `"cudd.h"` and/or the C++ header
 `"cuddObj.hh"` and get started on programming.
+
+Building the API documentation is possible via the `cudd-doc` target (requires
+Doxygen to be installed). You can then open `doc/html/index.html` in the CUDD
+project build directory.
 
 ## Additional Content
 
