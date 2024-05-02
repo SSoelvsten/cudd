@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project (cal
+project(CUDD
   VERSION 3.0.0
   DESCRIPTION "CUDD: University of Colorado at Boulder Decision Diagrams"
   HOMEPAGE_URL "https://ssoelvsten.github.io/cudd/"
