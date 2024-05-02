@@ -1,5 +1,5 @@
 /**
-  @file 
+  @file
 
   @ingroup cudd
 
@@ -58,6 +58,7 @@
 /*---------------------------------------------------------------------------*/
 
 #include <inttypes.h>
+#include <stdio.h>
 
 /*---------------------------------------------------------------------------*/
 /* Constant declarations                                                     */
@@ -311,7 +312,7 @@ typedef void (*DD_TOHFP)(DdManager *, void *);
 /**
   @brief Returns the regular version of a pointer.
 
-  @details 
+  @details
 
   @sideeffect none
 
@@ -324,7 +325,7 @@ typedef void (*DD_TOHFP)(DdManager *, void *);
 /**
   @brief Returns the complemented version of a pointer.
 
-  @details 
+  @details
 
   @sideeffect none
 
@@ -337,7 +338,7 @@ typedef void (*DD_TOHFP)(DdManager *, void *);
 /**
   @brief Returns 1 if a pointer is complemented.
 
-  @details 
+  @details
 
   @sideeffect none
 
