@@ -25,14 +25,14 @@ message(STATUS "  Library Options:")
 option(CUDD_CPP "Build C++ API" ON)
 message(STATUS "  |  Build C++ API:           ${CUDD_CPP}")
 
-option(CAL_SHARED "Build CUDD as a shared library" OFF)
+option(CUDD_SHARED "Build CUDD as a shared library" OFF)
 message(STATUS "  |  Shared:                  ${CUDD_SHARED}")
 
-option(CAL_STATS "Build CUDD with statistics" OFF)
+option(CUDD_STATS "Build CUDD with statistics" OFF)
 message(STATUS "  |  Statistics:              ${CUDD_STATS}")
 
 option(CUDD_NANOTRAV "Build Nanotrav Example" ON)
-message(STATUS "  |   Build Nanotrav:         ${CUDD_NANOTRAV}")
+message(STATUS "  |  Build Nanotrav:          ${CUDD_NANOTRAV}")
 
 message(STATUS "")
 
