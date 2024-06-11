@@ -31,7 +31,7 @@ message(STATUS "  |  Shared:                  ${CUDD_SHARED}")
 option(CUDD_STATS "Build CUDD with statistics" OFF)
 message(STATUS "  |  Statistics:              ${CUDD_STATS}")
 
-option(CUDD_NANOTRAV "Build Nanotrav Example" ON)
+option(CUDD_NANOTRAV "Build Nanotrav Example" OFF)
 message(STATUS "  |  Build Nanotrav:          ${CUDD_NANOTRAV}")
 
 message(STATUS "")
